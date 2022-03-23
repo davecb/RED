@@ -84,6 +84,8 @@ func (r *Red) Add(f Fields, val int64) error {
 			// For benchmarking only, this makes the program just slow
 			// enough that it can experience contention. It's too darned fast!
 			time.Sleep(100 * time.Nanosecond)
+			// if you want contention from Add, you need to use 1,000,000 microsecond, 1 second
+			//time.Sleep(1000000 * time.Microsecond)
 		}
 		r.send(add, f, val)
 		tmp := r.receive()
